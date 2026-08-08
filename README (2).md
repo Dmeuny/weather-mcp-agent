@@ -57,8 +57,91 @@ Rules:
   get_forecast and summarize day by day.
 ```
 
-## Demo (fill in after deploying)
 
-1. **"Will it rain in Chicago tomorrow?"** → [paste tool calls + answer]
+DEMO/RESULTS: 
+
+Will it rain in chicago tomorrow?
+I am using the predict_umbrella_needed function to determine if it will rain in Chicago tomorrow. This function will provide a recommendation based on the forecast precip chance for the given location and date.
+predict_umbrella_neededJSON
+{
+  "location": "Chicago",
+  "date": "tomorrow"
+}
+Output
+{
+  "error": "No forecast available for date 'tomorrow' (out of 16-day range)"
+}
+I am using the get_forecast function to get the weather forecast for Chicago for the next few days, which will help me determine if it will rain tomorrow.
+get_forecastJSON
+{
+  "location": "Chicago",
+  "days": 1
+}
+Output
+{
+  "location": "Chicago, Illinois",
+  "days": [
+    {
+      "date": "2026-08-08",
+      "high_f": 80.1,
+      "low_f": 69.3,
+      "precip_chance_pct": 6,
+      "conditions": "Mainly clear"
+    }
+  ]
+}
+It is unlikely to rain in Chicago tomorrow, as the forecast shows a 6% chance of precipitation. The conditions are expected to be mainly clear.
+Should I bring a jacket to Austin this weekend?
+I am using the get_forecast function to determine if it will be cold in Austin this weekend, so the user can decide whether to bring a jacket.
+get_forecastJSON
+{
+  "location": "Austin",
+  "days": 3
+}
+Output
+{
+  "location": "Austin, Texas",
+  "days": [
+    {
+      "date": "2026-08-08",
+      "high_f": 99.4,
+      "low_f": 76.2,
+      "precip_chance_pct": 2,
+      "conditions": "Partly cloudy"
+    },
+    {
+      "date": "2026-08-09",
+      "high_f": 97.2,
+      "low_f": 77.8,
+      "precip_chance_pct": 4,
+      "conditions": "Overcast"
+    },
+    {
+      "date": "2026-08-10",
+      "high_f": 102.2,
+      "low_f": 77.2,
+      "precip_chance_pct": 4,
+      "conditions": "Partly cloudy"
+    }
+  ]
+}
+Based on the forecast, it appears that Austin will be quite warm this weekend, with highs in the 97-102°F range and lows in the 76-78°F range. It is unlikely to be cold, so you may not need a jacket. However, it's always a good idea to check the forecast again closer to the weekend and to pack layers in case the temperature drops significantly at night or in air-conditioned spaces.
+What's the weather like in Denver right now?
+I am using the get_current_weather function to get the current weather conditions in Denver.
+get_current_weatherJSON
+{
+  "location": "Denver"
+}
+Output
+{
+  "location": "Denver, Colorado",
+  "temperature_f": 98.1,
+  "humidity_pct": 9,
+  "wind_mph": 4.7,
+  "conditions": "Overcast",
+  "observed_at": "2026-08-08T11:15"
+}
+The current weather in Denver is overcast with a temperature of 98.1°F, humidity of 9%, and a gentle wind of 4.7 mph.
+
 2. **"Should I bring a jacket to Austin this weekend?"** → [paste tool calls + answer]
 3. **"What's the weather like in Denver right now?"** → [paste tool calls + answer]
